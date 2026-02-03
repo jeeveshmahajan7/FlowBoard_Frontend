@@ -22,7 +22,6 @@ const Dashboard = () => {
       <h1 className="sr-only">Dashboard</h1>
 
       <label className="input w-full mb-8">
-        <input type="search" required placeholder="Search" />
         <button className="btn btn-sm" type="submit">
           <svg
             className="h-[1em] opacity-50"
