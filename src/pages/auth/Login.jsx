@@ -25,7 +25,16 @@ const Login = () => {
       navigate("/dashboard");
     } catch (error) {
       console.error(error);
-      toast.error(error.message || "Login failed");
+
+      if (error.status === 401) {
+        toast.error("Invalid email or password");
+      } else if (error.status === 404) {
+        toast.error("User not found");
+      } else if (error.message) {
+        toast.error(error.message);
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
     } finally {
       setLoading(false);
     }

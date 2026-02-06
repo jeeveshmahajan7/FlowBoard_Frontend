@@ -21,18 +21,20 @@ const request = async (url, options = {}) => {
   };
 
   const response = await fetch(`${API}${url}`, config);
-
   const data = await response.json();
 
-  // auto logout -> after token expiry
-  if (response.status === 401) {
+  // auto logout -> only for protected routes
+  if (response.status === 401 && token) {
     console.warn("Token expired → Logging out user");
     logoutUser();
     throw new Error("Session expired. Please login again.");
   }
 
   if (!response.ok) {
-    throw new Error(data.message || "An error occured");
+    const error = new Error(data.message || "An error occured");
+    error.status = response.status;
+    error.details = data;
+    throw error;
   }
 
   return data;
