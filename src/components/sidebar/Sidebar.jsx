@@ -4,7 +4,8 @@ import {
   CheckSquare,
   Users,
   LogOut,
-  Settings
+  Settings,
+  LineChart,
 } from "lucide-react";
 import { useState } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
@@ -88,6 +89,20 @@ const Sidebar = () => {
           >
             <Users size={20} />
             <span className="hidden lg:inline">Teams</span>
+          </NavLink>
+
+          <NavLink
+            to="/reports"
+            className={({ isActive }) =>
+              `${
+                isActive
+                  ? "bg-base-300 border-accent font-semibold"
+                  : "opacity-70 hover:opacity-100"
+              } btn btn-ghost justify-center lg:justify-start w-full gap-2`
+            }
+          >
+            <LineChart size={20} />
+            <span className="hidden lg:inline">Reports</span>
           </NavLink>
 
           <NavLink

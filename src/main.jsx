@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import "./index.css";
+import "./utils/chartSetup";
 import App from "./App.jsx";
 import { FlowBoardProvider } from "./context/FlowBoardContext.jsx";
 
@@ -16,5 +17,5 @@ createRoot(document.getElementById("root")).render(
         <ToastContainer position="top-right" autoClose={3000} />
       </Router>
     </FlowBoardProvider>
-  </StrictMode>
+  </StrictMode>,
 );
